@@ -1,0 +1,10 @@
+#!/bin/bash
+DIR_SRC=src
+DIR_BUILD=build
+
+if [ ! -d $DIR_BUILD ]; then
+    mkdir $DIR_BUILD
+fi
+
+node_modules/.bin/babel $DIR_SRC/Notification.js --out-file $DIR_BUILD/notification.js --source-maps
+node_modules/.bin/uglify -s $DIR_BUILD/notification.js -o $DIR_BUILD/notification.min.js
